@@ -1,0 +1,49 @@
+ <div class="card m-b-20">
+                <div class="card-body">
+
+                    <h4 class="mt-0 header-title">Bootstrap MaxLength</h4>
+                    <p class="text-muted m-b-30">This plugin integrates by default with
+                        Twitter bootstrap using badges to display the maximum lenght of the
+                        field where the user is inserting text. </p>
+
+                    <label class="text-muted">Default usage</label>
+                    <p class="text-muted m-b-15">
+                        The badge will show up by default when the remaining chars are 10 or less:
+                    </p>
+                    <input type="text" class="form-control" maxlength="25" name="defaultconfig" id="defaultconfig" />
+
+                    <div class="m-t-20">
+                        <label class="text-muted">Threshold value</label>
+                        <p class="text-muted m-b-15">
+                            Do you want the badge to show up when there are 20 chars or less? Use the <code>threshold</code> option:
+                        </p>
+                        <input type="text" maxlength="25" name="thresholdconfig" class="form-control" id="thresholdconfig" />
+                    </div>
+
+                    <div class="m-t-20">
+                        <label class="text-muted">All the options</label>
+                        <p class="text-muted m-b-15">
+                            Please note: if the <code>alwaysShow</code> option is enabled, the <code>threshold</code> option is ignored.
+                        </p>
+                        <input type="text" class="form-control" maxlength="25" name="alloptions" id="alloptions" />
+                    </div>
+
+                    <div class="m-t-20">
+                        <label class="text-muted">Position</label>
+                        <p class="text-muted m-b-15">
+                            All you need to do is specify the <code>placement</code> option, with one of those strings. If none
+                            is specified, the positioning will be defauted to 'bottom'.
+                        </p>
+                        <input type="text" class="form-control" maxlength="25" name="placement" id="placement" />
+                    </div>
+
+                    <div class="m-t-20">
+                        <label class="text-muted">textareas</label>
+                        <p class="text-muted m-b-15">
+                            Bootstrap maxlength supports textarea as well as inputs. Even on old IE.
+                        </p>
+                        <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="This textarea has a limit of 225 chars."></textarea>
+                    </div>
+
+                </div>
+            </div>

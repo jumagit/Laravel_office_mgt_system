@@ -1,0 +1,4 @@
+_iub.csRC = {};
+_iub.csEnabled = true;
+_iub.csPurposes = [4,3,2,1,6];
+_iub.csT = 0.05;

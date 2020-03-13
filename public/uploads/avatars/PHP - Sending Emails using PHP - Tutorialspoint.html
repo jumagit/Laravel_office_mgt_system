@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.tutorialspoint.com/php/php_sending_emails.htm -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/publishertag.prebid.js.download"></script><style type="text/css">.mui-textfield.mui-textfield--float-label > label {-webkit-transition:all .15s ease-out;-moz-transition:all .15s ease-out;-o-transition:all .15s ease-out;transition:all .15s ease-out;}</style><style type="text/css">@keyframes mui-btn-inserted{from{transform:none;}to{transform:none;}}.mui-btn{animation-duration:0.0001s;animation-name:mui-btn-inserted;}@keyframes mui-dropdown-inserted{from{transform:none;}to{transform:none;}}[data-mui-toggle="dropdown"]{animation-duration:0.0001s;animation-name:mui-dropdown-inserted;}@keyframes mui-btn-inserted,mui-dropdown-inserted{from{transform:none;}to{transform:none;}}.mui-btn[data-mui-toggle="dropdown"]{animation-duration:0.0001s;animation-name:mui-btn-inserted,mui-dropdown-inserted;}@keyframes mui-tab-inserted{from{transform:none;}to{transform:none;}}[data-mui-toggle="tab"]{animation-duration:0.0001s;animation-name:mui-tab-inserted;}@keyframes mui-textfield-inserted{from{transform:none;}to{transform:none;}}.mui-textfield > input{animation-duration:0.0001s;animation-name:mui-textfield-inserted;}@keyframes mui-textfield-inserted{from{transform:none;}to{transform:none;}}.mui-textfield > textarea{animation-duration:0.0001s;animation-name:mui-textfield-inserted;}@keyframes mui-select-inserted{from{transform:none;}to{transform:none;}}.mui-select > select{animation-duration:0.0001s;animation-name:mui-select-inserted;}@keyframes mui-node-inserted{from{transform:none;}to{transform:none;}}.mui-select > select ~ .mui-event-trigger{animation-duration:0.0001s;animation-name:mui-node-inserted;}@keyframes mui-node-disabled{from{transform:none;}to{transform:none;}}.mui-select > select:disabled ~ .mui-event-trigger{animation-duration:0.0001s;animation-name:mui-node-disabled;}</style>
+<title>PHP - Sending Emails using PHP - Tutorialspoint</title>
+
+<meta name="description" content="PHP - Sending Emails using PHP - PHP must be configured correctly in the php.ini file with the details of how your system sends email. Open php.ini file available in /etc/ directory and find th">
+<meta name="keywords" content="C, C++, Python, Java, HTML, CSS, JavaScript, SQL, PHP, jQuery, XML, DOM, Bootstrap, Tutorials, Articles, Programming, training, learning, quiz, preferences, examples, code">
+<link rel="canonical" href="https://www.tutorialspoint.com/php/php_sending_emails.htm">
+<link rel="shortcut icon" href="https://www.tutorialspoint.com/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<link rel="stylesheet" href="./PHP - Sending Emails using PHP - Tutorialspoint_files/style-min-v1.css">
+<script src="./PHP - Sending Emails using PHP - Tutorialspoint_files/osd.js(1).download"></script><script src="./PHP - Sending Emails using PHP - Tutorialspoint_files/amp4ads-host-v0.js.download"></script><script src="./PHP - Sending Emails using PHP - Tutorialspoint_files/pubads_impl_rendering_2020022701.js.download"></script><script type="text/javascript" async="" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/analytics.js.download"></script><script src="./PHP - Sending Emails using PHP - Tutorialspoint_files/script-min-v1.js.download"></script><link rel="stylesheet" type="text/css" href="./PHP - Sending Emails using PHP - Tutorialspoint_files/prettify.css">
+<script>function printPage() { window.print(); }</script>
+<script data-cfasync="false" type="text/javascript">(function(w, d) { var s = d.createElement('script'); s.src = '//cdn.adpushup.com/40046/adpushup.js'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script><script src="./PHP - Sending Emails using PHP - Tutorialspoint_files/adpushup.js.download" type="text/javascript" async=""></script>
+<script data-cfasync="false" type="text/javascript">(function(w, d) { var s = d.createElement('script'); s.src = '//delivery.adrecover.com/18107/adRecover.js'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script><script src="./PHP - Sending Emails using PHP - Tutorialspoint_files/adRecover.js.download" type="text/javascript" async=""></script>
+
+<style>
+.right-menu .mui-btn {
+    background-color:#017572;
+}
+a.demo {
+    background:#017572;
+}
+li.heading {
+    background:#017572;
+}
+.course-box{background:#017572}
+.home-intro-sub p{color:#017572}
+</style>
+<script src="./PHP - Sending Emails using PHP - Tutorialspoint_files/detector.js.download"></script><script type="text/javascript" async="" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/jquery.min.js.download"></script><script src="./PHP - Sending Emails using PHP - Tutorialspoint_files/gpt.js.download" async=""></script><script type="text/javascript">(function($){ 
+window.adpushup.utils.checkElementInViewPercent = function(){
+    if(document.hasFocus()){
+        return true;
+    }
+}
+
+
+ })(adpushup.$)</script><link rel="preload" href="./PHP - Sending Emails using PHP - Tutorialspoint_files/f(13).txt" as="script"><script type="text/javascript" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/f(13).txt"></script><script src="./PHP - Sending Emails using PHP - Tutorialspoint_files/pubads_impl_2020022701.js.download" async=""></script><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-37/html/container.html"><script type="text/javascript">(function($){ 
+
+ })(adpushup.$)</script></head>
+<body cz-shortcut-listen="true">
+<header id="header" class="fixed">
+<!-- Top sub-menu Starts Here -->
+<div class="mui-appbar mui-container-fulid top-menu">
+<div class="mui-container">
+<div class="top-menu-item home">
+<a href="https://www.tutorialspoint.com/index.htm" target="_blank" title="TutorialsPoint - Home"><i class="fal fa-home"></i> <span>Home</span></a>
+</div>
+<div class="top-menu-item qa">
+<a href="https://www.tutorialspoint.com/about/about_careers.htm" target="_blank" title="Job @ Tutorials Point"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
+</div>
+<div class="top-menu-item tools">
+<a href="https://www.tutorialspoint.com/online_dev_tools.htm" target="_blank" title="Tools - Online Development and Testing Tools"><i class="fal fa-cogs"></i> <span>Tools</span></a>
+</div>
+<div class="top-menu-item coding-ground">
+<a href="https://www.tutorialspoint.com/codingground.htm" target="_blank" title="Coding Ground - Free Online IDE and Terminal"><i class="fal fa-code"></i> <span>Coding Ground </span></a> 
+</div>
+<div class="top-menu-item current-affairs">
+<a href="https://www.tutorialspoint.com/current_affairs.htm" target="_blank" title="Daily Current Affairs"><i class="fal fa-layer-plus"></i> <span>Current Affairs</span></a>
+</div>
+<div class="top-menu-item upsc-notes">
+<a href="https://www.tutorialspoint.com/upsc_ias_exams.htm" target="_blank" title="UPSC IAS Exams Notes - TutorialsPoint"><i class="fal fa-user-tie"></i> <span>UPSC Notes</span></a>
+</div>      
+<div class="top-menu-item online-tutoris">
+<a href="https://www.tutorialspoint.com/tutor_connect/index.php" target="_blank" title="Top Online Tutors - Tutor Connect"><i class="fal fa-user"></i> <span>Online Tutors</span></a>
+</div>
+<div class="top-menu-item whiteboard">
+<a href="https://www.tutorialspoint.com/whiteboard.htm" target="_blank" title="Free Online Whiteboard"><i class="fal fa-chalkboard"></i> <span>Whiteboard</span></a>
+</div>
+<div class="top-menu-item net-meeting">
+<a href="https://www.tutorialspoint.com/netmeeting.php" target="_blank" title="A free tool for online video conferencing"><i class="fal fa-chalkboard-teacher"></i> <span>Net Meeting</span></a> 
+</div>
+<div class="top-menu-item articles">
+<a href="https://www.tutorix.com/" target="_blank" title="Tutorx - The Best Learning App" rel="nofollow"><i class="fal fa-video"></i> <span>Tutorix</span></a> 
+</div>        
+<div class="social-menu-item">
+<a href="https://www.facebook.com/tutorialspointindia" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Facebook"><i class="fab fa-facebook-f"></i></a> 
+<a href="https://www.twitter.com/tutorialspoint" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Twitter"><i class="fab fa-twitter"></i></a>
+<a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Linkedin"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint YouTube"><i class="fab fa-youtube"></i></a>
+</div>        
+</div>
+</div>
+<!-- Top sub-menu Ends Here -->
+<!-- Top main-menu Starts Here -->
+<div class="mui-appbar mui-container-fulid mui--appbar-line-height mui--z1 sticky" id="logo-menu">
+<div class="mui-container">
+<div class="left-menu">
+<a href="https://www.tutorialspoint.com/index.htm" title="Tutorialspoint">
+<img class="tp-logo" alt="tutorialspoint" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/logo.png">
+</a>
+<div class="mui-dropdown">
+<a class="mui-btn mui-btn--primary categories" data-mui-toggle="dropdown"><i class="fa fa-th-large"></i> 
+<span>Categories <span class="mui-caret"></span></span></a>            
+<ul class="mui-dropdown__menu cat-menu">
+<li>
+<ul>
+<li><a href="https://www.tutorialspoint.com/academic_tutorials.htm"><i class="fa fa-caret-right"></i> Academic Tutorials</a></li>
+<li><a href="https://www.tutorialspoint.com/big_data_tutorials.htm"><i class="fa fa-caret-right"></i> Big Data &amp; Analytics </a></li>
+<li><a href="https://www.tutorialspoint.com/computer_programming_tutorials.htm"><i class="fa fa-caret-right"></i> Computer Programming </a></li>
+<li><a href="https://www.tutorialspoint.com/computer_science_tutorials.htm"><i class="fa fa-caret-right"></i> Computer Science </a></li>
+<li><a href="https://www.tutorialspoint.com/database_tutorials.htm"><i class="fa fa-caret-right"></i> Databases </a></li>
+<li><a href="https://www.tutorialspoint.com/devops_tutorials.htm"><i class="fa fa-caret-right"></i> DevOps </a></li>
+<li><a href="https://www.tutorialspoint.com/digital_marketing_tutorials.htm"><i class="fa fa-caret-right"></i> Digital Marketing </a></li>
+<li><a href="https://www.tutorialspoint.com/engineering_tutorials.htm"><i class="fa fa-caret-right"></i> Engineering Tutorials </a></li>
+<li><a href="https://www.tutorialspoint.com/upsc_ias_exams.htm"><i class="fa fa-caret-right"></i> Exams Syllabus </a></li>
+<li><a href="https://www.tutorialspoint.com/famous_monuments.htm"><i class="fa fa-caret-right"></i> Famous Monuments </a></li>
+<li><a href="https://www.tutorialspoint.com/gate_exams_tutorials.htm"><i class="fa fa-caret-right"></i> GATE Exams Tutorials</a></li>
+<li><a href="https://www.tutorialspoint.com/latest_technologies.htm"><i class="fa fa-caret-right"></i> Latest Technologies </a></li>
+<li><a href="https://www.tutorialspoint.com/machine_learning_tutorials.htm"><i class="fa fa-caret-right"></i> Machine Learning </a></li>
+<li><a href="https://www.tutorialspoint.com/mainframe_tutorials.htm"><i class="fa fa-caret-right"></i> Mainframe Development </a></li>
+<li><a href="https://www.tutorialspoint.com/management_tutorials.htm"><i class="fa fa-caret-right"></i> Management Tutorials </a></li>
+<li><a href="https://www.tutorialspoint.com/maths_tutorials.htm"><i class="fa fa-caret-right"></i> Mathematics Tutorials</a></li>
+<li><a href="https://www.tutorialspoint.com/microsoft_technologies_tutorials.htm"><i class="fa fa-caret-right"></i> Microsoft Technologies </a></li>
+<li><a href="https://www.tutorialspoint.com/misc_tutorials.htm"><i class="fa fa-caret-right"></i> Misc tutorials </a></li>
+<li><a href="https://www.tutorialspoint.com/mobile_development_tutorials.htm"><i class="fa fa-caret-right"></i> Mobile Development </a></li>
+<li><a href="https://www.tutorialspoint.com/java_technology_tutorials.htm"><i class="fa fa-caret-right"></i> Java Technologies </a></li>
+<li><a href="https://www.tutorialspoint.com/python_technologies_tutorials.htm"><i class="fa fa-caret-right"></i> Python Technologies </a></li>
+<li><a href="https://www.tutorialspoint.com/sap_tutorials.htm"><i class="fa fa-caret-right"></i> SAP Tutorials </a></li>
+<li><a href="https://www.tutorialspoint.com/scripting_lnaguage_tutorials.htm"><i class="fa fa-caret-right"></i>Programming Scripts </a></li>
+<li><a href="https://www.tutorialspoint.com/selected_reading.htm"><i class="fa fa-caret-right"></i> Selected Reading </a></li>
+<li><a href="https://www.tutorialspoint.com/software_quality_tutorials.htm"><i class="fa fa-caret-right"></i> Software Quality </a></li>
+<li><a href="https://www.tutorialspoint.com/soft_skill_tutorials.htm"><i class="fa fa-caret-right"></i> Soft Skills </a></li>
+<li><a href="https://www.tutorialspoint.com/telecom_tutorials.htm"><i class="fa fa-caret-right"></i> Telecom Tutorials </a></li>
+<li><a href="https://www.tutorialspoint.com/upsc_ias_exams.htm"><i class="fa fa-caret-right"></i> UPSC IAS Exams </a></li>
+<li><a href="https://www.tutorialspoint.com/web_development_tutorials.htm"><i class="fa fa-caret-right"></i> Web Development </a></li>
+<li><a href="https://www.tutorialspoint.com/sports_tutorials.htm"><i class="fa fa-caret-right"></i> Sports Tutorials </a></li>
+<li><a href="https://www.tutorialspoint.com/xml_technologies_tutorials.htm"><i class="fa fa-caret-right"></i> XML Technologies </a></li>
+<li><a href="https://www.tutorialspoint.com/multi_language_tutorials.htm"><i class="fa fa-caret-right"></i> Multi-Language</a></li>
+<li><a href="https://www.tutorialspoint.com/questions_and_answers.htm"><i class="fa fa-caret-right"></i> Interview Questions</a></li>
+</ul>
+</li>
+</ul>
+<div class="clear"></div>
+</div> 
+</div>
+<div class="right-menu">
+<div class="toc-toggle">
+<a href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+</div>
+<div class="mobile-search-btn">
+<a href="https://www.tutorialspoint.com/search.htm"><i class="fal fa-search"></i></a>
+</div>
+<div class="search-box">
+<form method="get" class="search-form" name="searchform" action="https://www.google.com/search" target="_blank" novalidate="">
+<input type="hidden" name="sitesearch" value="www.tutorialspoint.com" class="user-valid valid">
+<input class="header-search-box" type="text" id="search-string" name="q" placeholder="Search your favorite tutorials..." onfocus="if (this.value == &#39;Search your favorite tutorials...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search your favorite tutorials...&#39;;}" autocomplete="off">
+<button><i class="fal fa-search"></i></button>
+</form>
+</div>
+<div class="menu-btn library-btn">
+<a href="https://www.tutorialspoint.com/tutorialslibrary.htm"><i class="fal fa-cubes"></i> <span>Library</span></a>
+</div>
+<div class="menu-btn videos-btn">
+<a href="https://www.tutorialspoint.com/videotutorials/index.php"><i class="fal fa-video"></i> <span>Videos</span></a> 
+</div>
+<div class="menu-btn videos-btn">
+<a href="https://www.tutorialspoint.com/questions/index.php"><i class="fa fa-location-arrow"></i> <span>Q/A</span></a>
+</div>
+<div class="menu-btn ebooks-btn">
+<a href="https://store.tutorialspoint.com/"><i class="fal fa-book"></i> <span>eBooks</span></a>
+</div>
+<div class="mui-dropdown">
+<button class="mui-btn mui-btn--primary mobile-menu" data-mui-toggle="dropdown" type="button">
+<span class="mui-caret"></span>
+</button>
+<ul class="mui-dropdown__menu">
+<li><a href="https://www.tutorialspoint.com/tutorialslibrary.htm"><i class="fal fa-cubes"></i> <span>Library</span></a></li>
+<li><a href="https://www.tutorialspoint.com/videotutorials/index.php"><i class="fal fa-video"></i> <span>Videos</span></a></li>
+<li><a href="https://store.tutorialspoint.com/"><i class="fal fa-book"></i> <span>eBooks</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Top main-menu Ends Here -->
+</header>
+<div class="mui-container-fluid content">
+<div class="mui-container">
+<!-- Tutorial ToC Starts Here -->
+<div class="mui-col-md-3 tutorial-toc">
+<div class="mini-logo">
+<img src="./PHP - Sending Emails using PHP - Tutorialspoint_files/php-mini-logo.jpg" alt="PHP Tutorial">
+</div>
+<ul class="toc chapters">
+<li><a class="videolink" href="https://www.tutorialspoint.com/php_online_training/index.asp" target="_blank"><img src="./PHP - Sending Emails using PHP - Tutorialspoint_files/php-video-tutorials.jpg" alt="PHP Video Tutorials"></a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">PHP Tutorial</li>
+<li><a href="https://www.tutorialspoint.com/php/index.htm">PHP - Home</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_introduction.htm">PHP - Introduction</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_environment.htm">PHP - Environment Setup</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_syntax_overview.htm">PHP - Syntax Overview</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_variable_types.htm">PHP - Variable Types</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_constants.htm">PHP - Constants</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_operator_types.htm">PHP - Operator Types</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_decision_making.htm">PHP - Decision Making</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_loop_types.htm">PHP - Loop Types </a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_arrays.htm">PHP - Arrays</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_strings.htm">PHP - Strings</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_web_concepts.htm">PHP - Web Concepts</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_get_post.htm">PHP - GET &amp; POST</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_file_inclusion.htm">PHP - File Inclusion</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_files.htm">PHP - Files &amp; I/O</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_functions.htm">PHP - Functions</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_cookies.htm">PHP - Cookies</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_sessions.htm">PHP - Sessions</a></li>
+<li style="background-color: rgb(214, 214, 214);"><a href="https://www.tutorialspoint.com/php/php_sending_emails.htm">PHP - Sending Emails</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_file_uploading.htm">PHP - File Uploading</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_coding_standard.htm">PHP - Coding Standard</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">Advanced PHP</li>
+<li><a href="https://www.tutorialspoint.com/php/php_predefined_variables.htm">PHP - Predefined Variables</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_regular_expression.htm">PHP - Regular Expression</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_error_handling.htm">PHP - Error Handling</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_bugs_debugging.htm">PHP - Bugs Debugging</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_date_and_time.htm">PHP - Date &amp; Time</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_and_mysql.htm">PHP &amp; MySQL</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_and_ajax.htm">PHP &amp; AJAX</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_and_xml.htm">PHP &amp; XML</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_object_oriented.htm">PHP - Object Oriented</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_for_c_developers.htm">PHP - For C Developers</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_for_perl_developers.htm">PHP - For PERL Developers</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">PHP Form Examples</li>
+<li><a href="https://www.tutorialspoint.com/php/php_form_introduction.htm">PHP - Form Introduction</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_validation_example.htm">PHP - Validation Example</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_complete_form.htm">PHP - Complete Form</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">PHP login Examples</li>
+<li><a href="https://www.tutorialspoint.com/php/php_login_example.htm">PHP - Login Example</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_facebook_login.htm">PHP - Facebook Login</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_paypal_integration.htm">PHP - Paypal Integration</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_mysql_login.htm">PHP - MySQL Login</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">PHP AJAX Examples</li>
+<li><a href="https://www.tutorialspoint.com/php/php_ajax_search.htm">PHP - AJAX Search</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_ajax_xml_parser.htm">PHP - AJAX XML Parser</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_ajax_autocomplete_search.htm">PHP - AJAX Auto Complete Search</a></li>
+<li><a href="https://www.tutorialspoint.com/php/ajax_rss_feed_example.htm">PHP - AJAX RSS Feed Example</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">PHP XML Example</li>
+<li><a href="https://www.tutorialspoint.com/php/php_xml_introduction.htm">PHP - XML Introduction</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_simple_xml.htm">PHP - Simple XML</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_simple_xml_get.htm">PHP - Simple XML GET</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_sax_parser_example.htm">PHP - SAX Parser Example</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_dom_parser_example.htm">PHP - DOM Parser Example</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">PHP Frame Works</li>
+<li><a href="https://www.tutorialspoint.com/php/php_frame_works.htm">PHP - Frame Works</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_core_vs_frameworks.htm">PHP - Core PHP vs Frame Works</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">PHP Design Patterns</li>
+<li><a href="https://www.tutorialspoint.com/php/php_design_patterns.htm">PHP - Design Patterns</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">PHP Function Reference</li>
+<li><a href="https://www.tutorialspoint.com/php/php_function_reference.htm">PHP - Built-In Functions</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">PHP Useful Resources</li>
+<li><a href="https://www.tutorialspoint.com/php/php_questions_answers.htm">PHP - Questions &amp; Answers</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_useful_resources.htm">PHP - Useful Resources</a></li>
+<li><a href="https://www.tutorialspoint.com/php/php_discussion.htm">PHP - Discussion</a></li>
+</ul>
+<ul class="toc reading">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/upsc_ias_exams.htm">UPSC IAS Exams Notes</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+<div id="stickyparent" style="position: sticky;">
+<div style="height: 250px; width: 300px; position: fixed; top: 80px;" id="sticky-ad">
+<div id="00000001-b31fcc95-fc23-4c58-9601-dabadb417037" class="_ap_apex_ad" data-section="00000001-b31fcc95-fc23-4c58-9601-dabadb417037" data-orig-id="430c9911-782f-495d-88f9-69f58ca8c9a4" data-render-time="1583233365865" style="width: 300px; height: 250px; display: block; margin: 10px auto; text-align: center;" data-refresh-time="1583233446291" data-timeout="1036">
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("430c9911-782f-495d-88f9-69f58ca8c9a4");
+});
+</script>
+<div id="ADP_40046_300x250_00000001-b31fcc95-fc23-4c58-9601-dabadb417037" style="margin: 0 auto" data-google-query-id="CKHftI6U_ucCFdXj7QodLi4DhQ">
+
+<div id="google_ads_iframe_/103512698/21875371528_0__container__" style="border: 0pt none; display: inline-block; width: 300px; height: 250px;"><iframe frameborder="0" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/container.html" id="google_ads_iframe_/103512698/21875371528_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="300" height="250" data-is-safeframe="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" data-google-container-id="7" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe></div></div></div>
+</div>
+</div>
+</div>
+<!-- Tutorial ToC Ends Here -->
+<!-- Tutorial Content Starts Here -->
+<div class="mui-col-md-6 tutorial-content">
+<h1>PHP - Sending Emails using PHP</h1>
+<hr>
+<div class="top-ad-heading">Advertisements</div>
+<div style="text-align:center" class="google-top-ads">
+<div id="adp_top_ads" style="text-align:center !important;"><div id="00000001-70ef8f8c-4408-456a-8616-d976909a82ee" class="_ap_apex_ad" data-section="00000001-70ef8f8c-4408-456a-8616-d976909a82ee" data-orig-id="2d1bb2c4-eb72-471d-9c80-1bf5514728c1" data-render-time="1583233365868" style="width: 650px; height: 150px; display: block; margin: 10px auto; text-align: center;" data-refresh-time="1583233446292" data-timeout="1038"><div id="ADP_40046_650x150_00000001-70ef8f8c-4408-456a-8616-d976909a82ee" style="margin: 0 auto" data-google-query-id="CIvetI6U_ucCFYnj7QodEdMCwQ">
+
+<div id="google_ads_iframe_/103512698/ADP_40046_650X150_2d1bb2c4-eb72-471d-9c80-1bf5514728c1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/103512698/ADP_40046_650X150_2d1bb2c4-eb72-471d-9c80-1bf5514728c1_0" title="3rd party ad content" name="google_ads_iframe_/103512698/ADP_40046_650X150_2d1bb2c4-eb72-471d-9c80-1bf5514728c1_0" width="650" height="150" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="8" data-load-complete="true" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/saved_resource(4).html"></iframe></div></div></div></div>
+<script>
+     var adPos = document.getElementById('adp_top_ads');
+     var ad_id_720 = "8014640d-fd34-4b2e-9b1b-cc67234a2325";
+     var ad_id_650 = "2d1bb2c4-eb72-471d-9c80-1bf5514728c1";
+     var ad_id_300 = "df94a1a9-ae2f-432d-9a92-d93823ff4503";
+     var width = window.innerWidth;
+     var ad_id = ad_id_720;
+     if( width <= 768 ){
+        ad_id =  ad_id_300;
+     }else if( width <= 1435 ){
+        ad_id =  ad_id_650;
+     }
+     adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+     var adpushup = adpushup || {};
+     adpushup.que = adpushup.que || [];
+     adpushup.que.push(function() {
+     adpushup.triggerAd(ad_id);
+     });
+</script>
+</div>
+<br>
+<div class="mui-container-fluid button-borders">
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/php/php_sessions.htm"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/php/php_file_uploading.htm">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+</div>
+<div class="clearer"></div>
+<p>PHP must be configured correctly in the <b>php.ini</b> file with the details of how your system sends email. Open php.ini file available in <b>/etc/</b> directory and find the section headed <b>[mail function]</b>.</p>
+<p>Windows users should ensure that two directives are supplied. The first is called SMTP that defines your email server address. The second is called sendmail_from which defines your own email address.</p>
+<p>The configuration for Windows should look something like this −</p>
+<pre class="result notranslate">[mail function]
+; For Win32 only.
+SMTP = smtp.secureserver.net
+
+; For win32 only
+sendmail_from = webmaster@tutorialspoint.com
+</pre> 
+<p>Linux users simply need to let PHP know the location of their <b>sendmail</b> application. The path and any desired switches should be specified to the sendmail_path directive.</p>
+<p>The configuration for Linux should look something like this −</p>
+<pre class="result notranslate">[mail function]
+; For Win32 only.
+SMTP = 
+
+; For win32 only
+sendmail_from = 
+
+; For Unix only
+sendmail_path = /usr/sbin/sendmail -t -i
+</pre> 
+<p>Now you are ready to go −</p>
+<h2>Sending plain text email</h2>
+<p>PHP makes use of <b>mail()</b> function to send an email. This function requires three mandatory arguments that specify the recipient's email address, the subject of the the message and the actual message additionally there are other two optional parameters.</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="pln">mail</span><span class="pun">(</span><span class="pln"> to</span><span class="pun">,</span><span class="pln"> subject</span><span class="pun">,</span><span class="pln"> message</span><span class="pun">,</span><span class="pln"> headers</span><span class="pun">,</span><span class="pln"> parameters </span><span class="pun">);</span></pre> 
+<p>Here is the description for each parameters.</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th class="ts">Sr.No</th>
+<th class="ts">Parameter &amp; Description</th>
+</tr>
+<tr>
+<td class="ts">1</td>
+<td><p><b>to</b></p>
+<p>Required. Specifies the receiver / receivers of the email</p></td>
+</tr>
+<tr>
+<td class="ts">2</td>
+<td><p><b>subject</b></p>
+<p>Required. Specifies the subject of the email. This parameter cannot contain any newline characters</p></td>
+</tr>
+<tr>
+<td class="ts">3</td>
+<td><p><b>message</b></p>
+<p>Required. Defines the message to be sent. Each line should be separated with a LF (\n). Lines should not exceed 70 characters</p></td>
+</tr>
+<tr>
+<td class="ts">4</td>
+<td><p><b>headers</b></p>
+<p>Optional. Specifies additional headers, like From, Cc, and Bcc. The additional headers should be separated with a CRLF (\r\n)</p></td>
+</tr>
+<tr>
+<td class="ts">5</td>
+<td><p><b>parameters</b></p>
+<p>Optional. Specifies an additional parameter to the send mail program</p></td>
+</tr>
+</tbody></table>
+<p>As soon as the mail function is called PHP will attempt to send the email then it will return true if successful or false if it is failed.</p>
+<p>Multiple recipients can be specified as the first argument to the mail() function in a comma separated list.</p>
+<h2>Sending HTML email</h2>
+<p>When you send a text message using PHP then all the content will be treated as simple text. Even if you will include HTML tags in a text message, it will be displayed as simple text and HTML tags will not be formatted according to HTML syntax. But PHP provides option to send an HTML message as actual HTML message.</p>
+<p>While sending an email message you can specify a Mime version, content type and character set to send an HTML email.</p>
+<h3>Example</h3>
+<p>Following example will send an HTML email message to xyz@somedomain.com copying it to afgh@somedomain.com. You can code this program in such a way that it should receive all content from the user and then it should send an email.</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="tag">&lt;html&gt;</span><span class="pln">
+   
+   </span><span class="tag">&lt;head&gt;</span><span class="pln">
+      </span><span class="tag">&lt;title&gt;</span><span class="pln">Sending HTML email using PHP</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/head&gt;</span><span class="pln">
+   
+   </span><span class="tag">&lt;body&gt;</span><span class="pln">
+      
+      </span><span class="pun">&lt;?</span><span class="pln">php
+         $to </span><span class="pun">=</span><span class="pln"> </span><span class="str">"xyz@somedomain.com"</span><span class="pun">;</span><span class="pln">
+         $subject </span><span class="pun">=</span><span class="pln"> </span><span class="str">"This is subject"</span><span class="pun">;</span><span class="pln">
+         
+         $message </span><span class="pun">=</span><span class="pln"> </span><span class="str">"&lt;b&gt;This is HTML message.&lt;/b&gt;"</span><span class="pun">;</span><span class="pln">
+         $message </span><span class="pun">.=</span><span class="pln"> </span><span class="str">"&lt;h1&gt;This is headline.&lt;/h1&gt;"</span><span class="pun">;</span><span class="pln">
+         
+         $header </span><span class="pun">=</span><span class="pln"> </span><span class="str">"From:abc@somedomain.com \r\n"</span><span class="pun">;</span><span class="pln">
+         $header </span><span class="pun">.=</span><span class="pln"> </span><span class="str">"Cc:afgh@somedomain.com \r\n"</span><span class="pun">;</span><span class="pln">
+         $header </span><span class="pun">.=</span><span class="pln"> </span><span class="str">"MIME-Version: 1.0\r\n"</span><span class="pun">;</span><span class="pln">
+         $header </span><span class="pun">.=</span><span class="pln"> </span><span class="str">"Content-type: text/html\r\n"</span><span class="pun">;</span><span class="pln">
+         
+         $retval </span><span class="pun">=</span><span class="pln"> mail </span><span class="pun">(</span><span class="pln">$to</span><span class="pun">,</span><span class="pln">$subject</span><span class="pun">,</span><span class="pln">$message</span><span class="pun">,</span><span class="pln">$header</span><span class="pun">);</span><span class="pln">
+         
+         </span><span class="kwd">if</span><span class="pun">(</span><span class="pln"> $retval </span><span class="pun">==</span><span class="pln"> </span><span class="kwd">true</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            echo </span><span class="str">"Message sent successfully..."</span><span class="pun">;</span><span class="pln">
+         </span><span class="pun">}</span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            echo </span><span class="str">"Message could not be sent..."</span><span class="pun">;</span><span class="pln">
+         </span><span class="pun">}</span><span class="pln">
+      </span><span class="pun">?&gt;</span><span class="pln">
+      
+   </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></pre> 
+<h2>Sending attachments with email</h2>
+<p>To send an email with mixed content requires to set <b>Content-type</b> header to <b>multipart/mixed</b>. Then text and attachment sections can be specified within <b>boundaries</b>.</p>
+<p>A boundary is started with two hyphens followed by a unique number which can not appear in the message part of the email. A PHP function <b>md5()</b> is used to create a 32 digit hexadecimal number to create unique number. A final boundary denoting the email's final section must also end with two hyphens.</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="pun">&lt;?</span><span class="pln">php
+   </span><span class="com">// request variables // important</span><span class="pln">
+   $from </span><span class="pun">=</span><span class="pln"> $_REQUEST</span><span class="pun">[</span><span class="str">"from"</span><span class="pun">];</span><span class="pln">
+   $emaila </span><span class="pun">=</span><span class="pln"> $_REQUEST</span><span class="pun">[</span><span class="str">"emaila"</span><span class="pun">];</span><span class="pln">
+   $filea </span><span class="pun">=</span><span class="pln"> $_REQUEST</span><span class="pun">[</span><span class="str">"filea"</span><span class="pun">];</span><span class="pln">
+   
+   </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">$filea</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="kwd">function</span><span class="pln"> mail_attachment </span><span class="pun">(</span><span class="pln">$from </span><span class="pun">,</span><span class="pln"> $to</span><span class="pun">,</span><span class="pln"> $subject</span><span class="pun">,</span><span class="pln"> $message</span><span class="pun">,</span><span class="pln"> $attachment</span><span class="pun">){</span><span class="pln">
+         $fileatt </span><span class="pun">=</span><span class="pln"> $attachment</span><span class="pun">;</span><span class="pln"> </span><span class="com">// Path to the file</span><span class="pln">
+         $fileatt_type </span><span class="pun">=</span><span class="pln"> </span><span class="str">"application/octet-stream"</span><span class="pun">;</span><span class="pln"> </span><span class="com">// File Type </span><span class="pln">
+         
+         $start </span><span class="pun">=</span><span class="pln"> strrpos</span><span class="pun">(</span><span class="pln">$attachment</span><span class="pun">,</span><span class="pln"> </span><span class="str">'/'</span><span class="pun">)</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pln"> </span><span class="pun">?</span><span class="pln"> 
+            strrpos</span><span class="pun">(</span><span class="pln">$attachment</span><span class="pun">,</span><span class="pln"> </span><span class="str">'//'</span><span class="pun">)</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> strrpos</span><span class="pun">(</span><span class="pln">$attachment</span><span class="pun">,</span><span class="pln"> </span><span class="str">'/'</span><span class="pun">)+</span><span class="lit">1</span><span class="pun">;</span><span class="pln">
+				
+         $fileatt_name </span><span class="pun">=</span><span class="pln"> substr</span><span class="pun">(</span><span class="pln">$attachment</span><span class="pun">,</span><span class="pln"> $start</span><span class="pun">,</span><span class="pln"> 
+            strlen</span><span class="pun">(</span><span class="pln">$attachment</span><span class="pun">));</span><span class="pln"> </span><span class="com">// Filename that will be used for the </span><span class="pln">
+            file </span><span class="kwd">as</span><span class="pln"> the attachment 
+         
+         $email_from </span><span class="pun">=</span><span class="pln"> $from</span><span class="pun">;</span><span class="pln"> </span><span class="com">// Who the email is from</span><span class="pln">
+         $subject </span><span class="pun">=</span><span class="pln"> </span><span class="str">"New Attachment Message"</span><span class="pun">;</span><span class="pln">
+         
+         $email_subject </span><span class="pun">=</span><span class="pln">  $subject</span><span class="pun">;</span><span class="pln"> </span><span class="com">// The Subject of the email </span><span class="pln">
+         $email_txt </span><span class="pun">=</span><span class="pln"> $message</span><span class="pun">;</span><span class="pln"> </span><span class="com">// Message that the email has in it </span><span class="pln">
+         $email_to </span><span class="pun">=</span><span class="pln"> $to</span><span class="pun">;</span><span class="pln"> </span><span class="com">// Who the email is to</span><span class="pln">
+         
+         $headers </span><span class="pun">=</span><span class="pln"> </span><span class="str">"From: "</span><span class="pun">.</span><span class="pln">$email_from</span><span class="pun">;</span><span class="pln">
+         $file </span><span class="pun">=</span><span class="pln"> fopen</span><span class="pun">(</span><span class="pln">$fileatt</span><span class="pun">,</span><span class="str">'rb'</span><span class="pun">);</span><span class="pln"> 
+         $data </span><span class="pun">=</span><span class="pln"> fread</span><span class="pun">(</span><span class="pln">$file</span><span class="pun">,</span><span class="pln">filesize</span><span class="pun">(</span><span class="pln">$fileatt</span><span class="pun">));</span><span class="pln"> 
+         fclose</span><span class="pun">(</span><span class="pln">$file</span><span class="pun">);</span><span class="pln"> 
+         
+         $msg_txt</span><span class="pun">=</span><span class="str">"\n\n You have recieved a new attachment message from $from"</span><span class="pun">;</span><span class="pln">
+         $semi_rand </span><span class="pun">=</span><span class="pln"> md5</span><span class="pun">(</span><span class="pln">time</span><span class="pun">());</span><span class="pln"> 
+         $mime_boundary </span><span class="pun">=</span><span class="pln"> </span><span class="str">"==Multipart_Boundary_x{$semi_rand}x"</span><span class="pun">;</span><span class="pln"> 
+         $headers </span><span class="pun">.=</span><span class="pln"> </span><span class="str">"\nMIME-Version: 1.0\n"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> </span><span class="str">"Content-Type: multipart/mixed;\n"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> </span><span class="str">"
+            boundary=\"{$mime_boundary}\""</span><span class="pun">;</span><span class="pln">
+         
+         $email_txt </span><span class="pun">.=</span><span class="pln"> $msg_txt</span><span class="pun">;</span><span class="pln">
+			
+         $email_message </span><span class="pun">.=</span><span class="pln"> </span><span class="str">"This is a multi-part message in MIME format.\n\n"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> 
+            </span><span class="str">"--{$mime_boundary}\n"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> </span><span class="str">"Content-Type:text/html; 
+            charset = \"iso-8859-1\"\n"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> </span><span class="str">"Content-Transfer-Encoding: 7bit\n\n"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> 
+            $email_txt </span><span class="pun">.</span><span class="pln"> </span><span class="str">"\n\n"</span><span class="pun">;</span><span class="pln">
+				
+         $data </span><span class="pun">=</span><span class="pln"> chunk_split</span><span class="pun">(</span><span class="pln">base64_encode</span><span class="pun">(</span><span class="pln">$data</span><span class="pun">));</span><span class="pln">
+         
+         $email_message </span><span class="pun">.=</span><span class="pln"> </span><span class="str">"--{$mime_boundary}\n"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> </span><span class="str">"Content-Type: {$fileatt_type};\n"</span><span class="pln"> </span><span class="pun">.</span><span class="pln">
+            </span><span class="str">" name = \"{$fileatt_name}\"\n"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> </span><span class="com">//"Content-Disposition: attachment;\n" . </span><span class="pln">
+            </span><span class="com">//" filename = \"{$fileatt_name}\"\n" . "Content-Transfer-Encoding: </span><span class="pln">
+            base64\n\n</span><span class="str">" . $data . "</span><span class="pln">\n\n</span><span class="str">" . "</span><span class="pun">--{</span><span class="pln">$mime_boundary</span><span class="pun">}--</span><span class="pln">\n</span><span class="str">";
+				
+         $ok = mail($email_to, $email_subject, $email_message, $headers);
+         
+         if($ok) {
+            echo "</span><span class="typ">File</span><span class="pln"> </span><span class="typ">Sent</span><span class="pln"> </span><span class="typ">Successfully</span><span class="pun">.</span><span class="str">";
+            unlink($attachment); // delete a file after attachment sent.
+         }else {
+            die("</span><span class="typ">Sorry</span><span class="pln"> but the email could </span><span class="kwd">not</span><span class="pln"> be sent</span><span class="pun">.</span><span class="pln"> </span><span class="typ">Please</span><span class="pln"> go back </span><span class="kwd">and</span><span class="pln"> </span><span class="kwd">try</span><span class="pln"> again</span><span class="pun">!</span><span class="str">");
+         }
+      }
+      move_uploaded_file($_FILES["</span><span class="pln">filea</span><span class="str">"]["</span><span class="pln">tmp_name</span><span class="str">"],
+         'temp/'.basename($_FILES['filea']['name']));
+			
+      mail_attachment("</span><span class="pln">$from</span><span class="str">", "</span><span class="pln">youremailaddress@gmail</span><span class="pun">.</span><span class="pln">com</span><span class="str">", 
+         "</span><span class="pln">subject</span><span class="str">", "</span><span class="pln">message</span><span class="str">", ("</span><span class="pln">temp</span><span class="pun">/</span><span class="str">".$_FILES["</span><span class="pln">filea</span><span class="str">"]["</span><span class="pln">name</span><span class="str">"]));
+   }
+</span><span class="pun">?&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+   </span><span class="tag">&lt;head&gt;</span><span class="pln">
+      
+      </span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">language</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"javascript"</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text/javascript"</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="kwd">function</span><span class="pln"> </span><span class="typ">CheckData45</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">with</span><span class="pun">(</span><span class="pln">document</span><span class="pun">.</span><span class="pln">filepost</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+               </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">filea</span><span class="pun">.</span><span class="pln">value </span><span class="pun">!</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="str">""</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                  document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">'one'</span><span class="pun">).</span><span class="pln">innerText </span><span class="pun">=</span><span class="pln"> 
+                     </span><span class="str">"Attaching File ... Please Wait"</span><span class="pun">;</span><span class="pln">
+               </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+         </span><span class="pun">}</span><span class="pln">
+      </span><span class="tag">&lt;/script&gt;</span><span class="pln">
+      
+   </span><span class="tag">&lt;/head&gt;</span><span class="pln">
+   </span><span class="tag">&lt;body&gt;</span><span class="pln">
+      
+      </span><span class="tag">&lt;table</span><span class="pln"> </span><span class="atn">width</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"100%"</span><span class="pln"> </span><span class="atn">height</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"100%"</span><span class="pln"> </span><span class="atn">border</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"0"</span><span class="pln"> 
+         </span><span class="atn">cellpadding</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"0"</span><span class="pln"> </span><span class="atn">cellspacing</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"0"</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+            </span><span class="tag">&lt;td</span><span class="pln"> </span><span class="atn">align</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"center"</span><span class="tag">&gt;</span><span class="pln">
+               </span><span class="tag">&lt;form</span><span class="pln"> </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"filepost"</span><span class="pln"> </span><span class="atn">method</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"post"</span><span class="pln"> 
+                  </span><span class="atn">action</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"file.php"</span><span class="pln"> </span><span class="atn">enctype</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"multipart/form-data"</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"file"</span><span class="tag">&gt;</span><span class="pln">
+                  
+                  </span><span class="tag">&lt;table</span><span class="pln"> </span><span class="atn">width</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"300"</span><span class="pln"> </span><span class="atn">border</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"0"</span><span class="pln"> </span><span class="atn">cellspacing</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"0"</span><span class="pln"> 
+                     </span><span class="atn">cellpadding</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"0"</span><span class="tag">&gt;</span><span class="pln">
+							
+                     </span><span class="tag">&lt;tr</span><span class="pln"> </span><span class="atn">valign</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"bottom"</span><span class="tag">&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;td</span><span class="pln"> </span><span class="atn">height</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"20"</span><span class="tag">&gt;</span><span class="pln">Your Name:</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+                     
+                     </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;td&gt;&lt;input</span><span class="pln"> </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"from"</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text"</span><span class="pln"> 
+                           </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"from"</span><span class="pln"> </span><span class="atn">size</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"30"</span><span class="tag">&gt;&lt;/td&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+                     
+                     </span><span class="tag">&lt;tr</span><span class="pln"> </span><span class="atn">valign</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"bottom"</span><span class="tag">&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;td</span><span class="pln"> </span><span class="atn">height</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"20"</span><span class="tag">&gt;</span><span class="pln">Your Email Address:</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+                     
+                     </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;td</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"frmtxt2"</span><span class="tag">&gt;&lt;input</span><span class="pln"> </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"emaila"</span><span class="pln">
+                           </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"emaila"</span><span class="pln"> </span><span class="atn">size</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"30"</span><span class="tag">&gt;&lt;/td&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+                     
+                     </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;td</span><span class="pln"> </span><span class="atn">height</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"20"</span><span class="pln"> </span><span class="atn">valign</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"bottom"</span><span class="tag">&gt;</span><span class="pln">Attach File:</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+                     
+                     </span><span class="tag">&lt;tr</span><span class="pln"> </span><span class="atn">valign</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"bottom"</span><span class="tag">&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;td</span><span class="pln"> </span><span class="atn">valign</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"bottom"</span><span class="tag">&gt;&lt;input</span><span class="pln"> </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"filea"</span><span class="pln"> 
+                           </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"file"</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"filea"</span><span class="pln"> </span><span class="atn">size</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"16"</span><span class="tag">&gt;&lt;/td&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+                     
+                     </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;td</span><span class="pln"> </span><span class="atn">height</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"40"</span><span class="pln"> </span><span class="atn">valign</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"middle"</span><span class="tag">&gt;&lt;input</span><span class="pln"> 
+                           </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Reset2"</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"reset"</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Reset2"</span><span class="pln"> </span><span class="atn">value</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Reset"</span><span class="tag">&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Submit2"</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"submit"</span><span class="pln"> 
+                           </span><span class="atn">value</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Submit"</span><span class="pln"> </span><span class="atn">onClick</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"</span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CheckData45</span><span class="pun">()</span><span class="atv">"</span><span class="tag">&gt;&lt;/td&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;/table&gt;</span><span class="pln">
+                  
+               </span><span class="tag">&lt;/form&gt;</span><span class="pln">
+               
+               </span><span class="tag">&lt;center&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;table</span><span class="pln"> </span><span class="atn">width</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"400"</span><span class="tag">&gt;</span><span class="pln">
+                     
+                     </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;td</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"one"</span><span class="tag">&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+                     
+                  </span><span class="tag">&lt;/table&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/center&gt;</span><span class="pln">
+               
+            </span><span class="tag">&lt;/td&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/table&gt;</span><span class="pln">
+      
+   </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></pre> 
+<div class="mui-container-fluid button-borders show" id="bottom_navigation">
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/php/php_sessions.htm"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+<a class="hide-on-mobile" href="javascript:printPage();"><i class="fa fa-print"></i> Print Page</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/php/php_file_uploading.htm">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+</div>
+<div class="google-bottom-ads">
+<div>Advertisements</div>
+<div id="adp_bottom_ads"><div id="00000001-ff81c6b6-785d-4ada-886a-d0bdfdc8f192" class="_ap_apex_ad" data-section="00000001-ff81c6b6-785d-4ada-886a-d0bdfdc8f192" data-orig-id="e7ddd6f7-1ab0-494a-bade-887daa4373a0" data-render-time="1583233365869" style="width: 580px; height: 400px; display: block; margin: 10px auto; text-align: center;" data-refresh-time="1583233446292" data-timeout="1040"><div id="ADP_40046_580x400_00000001-ff81c6b6-785d-4ada-886a-d0bdfdc8f192" style="margin: 0 auto" data-google-query-id="CPbStI6U_ucCFWRgFQgd0fcLCw">
+
+<div id="google_ads_iframe_/103512698/ADP_40046_580X400_e7ddd6f7-1ab0-494a-bade-887daa4373a0_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/103512698/ADP_40046_580X400_e7ddd6f7-1ab0-494a-bade-887daa4373a0_0" title="3rd party ad content" name="google_ads_iframe_/103512698/ADP_40046_580X400_e7ddd6f7-1ab0-494a-bade-887daa4373a0_0" width="580" height="400" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="9" data-load-complete="true" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/saved_resource(5).html"></iframe></div></div></div></div>
+<script>
+var adPos = document.getElementById('adp_bottom_ads');
+var mobile_ad_id = "a8a632a6-046e-4f5c-b25f-8bc82ac89fb2";
+var desktop_ad_id = "e7ddd6f7-1ab0-494a-bade-887daa4373a0";
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+var ad_id = window.innerWidth <= 768 ? mobile_ad_id : desktop_ad_id;
+adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+adpushup.triggerAd(ad_id);
+});
+</script>
+<div class="space-bottom"></div>
+</div>
+</div>
+<!-- Tutorial Content Ends Here -->
+<!-- Right Column Starts Here -->
+<div class="mui-col-md-2 google-right-ads">
+<div class="space-top"></div>
+<div class="google-right-ad" id="ad300" style="margin: 0px auto !important;margin-top:5px;">
+<div id="00000001-6b5ee3c3-8509-450e-a928-b7c3ac472a21" class="_ap_apex_ad" data-section="00000001-6b5ee3c3-8509-450e-a928-b7c3ac472a21" data-orig-id="f0f6cff6-393d-4170-b63a-d9ff06ca9f25" data-render-time="1583233365871" style="width: 300px; height: 250px; display: block; margin: 10px auto; text-align: center;" data-refresh-time="1583233446293" data-timeout="1042">
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("f0f6cff6-393d-4170-b63a-d9ff06ca9f25");
+});
+</script>
+<div id="ADP_40046_300x250_00000001-6b5ee3c3-8509-450e-a928-b7c3ac472a21" style="margin: 0 auto" data-google-query-id="CNPNtI6U_ucCFRlcFQgdKbEKoA">
+
+<div id="google_ads_iframe_/103512698/21871305451_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/103512698/21871305451_0" title="3rd party ad content" name="google_ads_iframe_/103512698/21871305451_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="a" data-load-complete="true" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/saved_resource(6).html"></iframe></div></div></div>
+</div>
+<div class="google-right-ad" style="margin-top:16px;">
+<div id="00000001-789ca682-968d-48a4-8c58-87a28bd9d2e8" class="_ap_apex_ad" data-section="00000001-789ca682-968d-48a4-8c58-87a28bd9d2e8" data-orig-id="5c0affd5-724a-475c-bfcd-cecbc7660c36" data-render-time="1583233365872" style="width: 300px; height: 250px; display: block; margin: 10px auto; text-align: center;" data-refresh-time="1583233446294" data-timeout="1044">
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("5c0affd5-724a-475c-bfcd-cecbc7660c36");
+});
+</script>
+<div id="ADP_40046_300x250_00000001-789ca682-968d-48a4-8c58-87a28bd9d2e8" style="margin: 0 auto" data-google-query-id="CLLSs46U_ucCFZRlFQgd8zkDcQ">
+
+<div id="google_ads_iframe_/103512698/21871305739_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/103512698/21871305739_0" title="3rd party ad content" name="google_ads_iframe_/103512698/21871305739_0" width="250" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="b" data-load-complete="true" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/saved_resource(7).html"></iframe></div></div></div>
+</div>
+<div class="space-bottom"></div>
+
+<div class="google-right-ad" style="margin-top:16px;margin-bottom:15px;">
+<div id="00000001-95c05033-7dc9-4fec-bae3-86cd7a318617" class="_ap_apex_ad" data-section="00000001-95c05033-7dc9-4fec-bae3-86cd7a318617" data-orig-id="8f8814c2-d64c-4d26-9cb9-543653c0b48f" data-render-time="1583233365874" style="width: 300px; height: 600px; display: block; margin: 10px auto; text-align: center;" data-refresh-time="1583233446295" data-timeout="1046">
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("8f8814c2-d64c-4d26-9cb9-543653c0b48f");
+});
+</script>
+<div id="ADP_40046_300x600_00000001-95c05033-7dc9-4fec-bae3-86cd7a318617" style="margin: 0 auto" data-google-query-id="CPPstI6U_ucCFbFgFQgdkD8AqA">
+
+<div id="google_ads_iframe_/103512698/21875371402_0__container__" style="border: 0pt none; display: inline-block; width: 300px; height: 250px;"><iframe frameborder="0" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/container(1).html" id="google_ads_iframe_/103512698/21875371402_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="300" height="250" data-is-safeframe="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" data-google-container-id="c" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe></div></div></div>
+</div>
+</div>
+</div>
+<!-- Right Column Ends Here -->
+</div>
+
+<div class="clear"></div>
+<footer id="footer">
+<div class="mui--text-center">
+<div class="mui--text-caption mui--text-light">
+<a href="https://www.tutorialspoint.com/index.htm" class="logo"><img class="img-responsive" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/logo-black.png" alt="Tutorials Point" title="Tutorials Point"></a>
+</div>
+<ul class="mui-list--inline mui--text-body2 mui--text-light">
+<li><a href="https://www.tutorialspoint.com/about/index.htm"><i class="fal fa-globe"></i> About us</a></li>
+<li><a href="https://www.tutorialspoint.com/about/about_terms_of_use.htm"><i class="fal fa-asterisk"></i> Terms of use</a></li>
+<li><a href="https://www.tutorialspoint.com/about/about_privacy.htm"> <i class="fal fa-shield-check"></i> Privacy Policy</a></li>
+<li><a href="https://www.tutorialspoint.com/about/faq.htm"><i class="fal fa-question-circle"></i> FAQ's</a></li>
+<li><a href="https://www.tutorialspoint.com/about/about_helping.htm"><i class="fal fa-hands-helping"></i> Helping</a></li>
+<li><a href="https://www.tutorialspoint.com/about/contact_us.htm"><i class="fal fa-map-marker-alt"></i> Contact</a></li>
+</ul>
+<div class="mui--text-caption mui--text-light bottom-copyright-text">© Copyright 2020. All Rights Reserved.</div>
+</div>
+<script async="" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/js"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-232293-6');
+</script>
+</footer>
+
+
+
+<iframe id="google_osd_static_frame_3370572898015" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/saved_resource(8).html"></iframe></body><iframe sandbox="allow-scripts allow-same-origin" id="556e47159bb6aae" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/checksync.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="56cbfc3f4fffba3" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/showad.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="5718f5b97a9d828" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/beacon.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="5846b1292b718d3" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./PHP - Sending Emails using PHP - Tutorialspoint_files/2000970.html">
+    </iframe></html>
