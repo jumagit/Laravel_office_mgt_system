@@ -250,85 +250,59 @@
                                           }
                                         </script>
 
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                          <input type="radio" id="postpaid" name="billType" value="2" class="custom-control-input">
-                                          <label class="custom-control-label" for="postpaid">Postpaid</label>
-                                      </div>
+                                                  <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="postpaid" name="billType" value="2" class="custom-control-input">
+                                                    <label class="custom-control-label" for="postpaid">Postpaid</label>
+                                                </div>
 
+                                              </div>
+                                            </div>
+
+
+                                            
+                                            <div class="form-group row">
+                                            <label for="grossperiod" class=" col-6">Gross Period(Months)</label>
+                                                  <div class="col-6">
+                                                    <input type="number" name="grossperiod"  id="grossperiod" class="form-control" onkeyup="effective(this.value)"  required>
+                                                    
+                                                </div>
+                                            </div>
+
+                                          <div class="form-group row">
+                                              <label for="AmountToPay" class=" col-6">Amount</label>
+                                                <div class="col-6">
+                                                <input type="text" name="amountToPay"  id="amountToPay" class="form-control " data-type="currency" value="Agreed Amount"  required>
+                                                </div>
+                                          </div>
+                      
+                                              
+                                          <div class="form-group row">
+                                              <label for="effectiveDate" class=" col-6">Effective Date</label>
+                                                  <div class="col-6">
+                                                  <input type="text" name="effectiveDate" id="date" value="" class="form-control "  required>
+                                                </div>
+                                          </div>
+
+                                          <div class="form-group row">
+                                            <label for="ENPDate" class=" col-6">Effective Charge Next Payment Date</label>
+                                                <div class="col-6">
+                                                <input type="text" name="ENPDate" id="ENPDate" value="" class="form-control "  required>
+                                              </div>
+                                        </div>
+
+                                    </div> 
+
+                                    {{-- coloured section ends --}}
+
+
+                                    <div class="form-group">
+                                      <label for="nextPDate">Next Payment Date</label>
+                                      <input type="text" name="nextPDate"  id="date" class="form-control date" placeholder="Next Payment  Date"  required>
                                     </div>
-                                </div>
-
-
-                                
-                                <div class="form-group row">
-                                <label for="grossperiod" class=" col-6">Gross Period(Months)</label>
-                                      <div class="col-6">
-                                        <input type="number" name="grossperiod"  id="grossperiod" class="form-control" onkeyup="effective(this.value)"  required>
-                                        
-                                     </div>
-                                </div>
-
-                              <div class="form-group row">
-                                  <label for="AmountToPay" class=" col-6">Amount</label>
-                                    <div class="col-6">
-                                    <input type="text" name="amountToPay"  id="amountToPay" class="form-control " data-type="currency" value="Agreed Amount"  required>
-                                    </div>
-                              </div>
-          
-                                  
-                              <div class="form-group row">
-                                  <label for="effectiveDate" class=" col-6">Effective Date</label>
-                                      <div class="col-6">
-                                      <input type="text" name="effectiveDate" id="date" value="" class="form-control "  required>
-                                    </div>
-                              </div>
-
-                              <div class="form-group row">
-                                <label for="ENPDate" class=" col-6">Effective Charge Next Payment Date</label>
-                                    <div class="col-6">
-                                    <input type="text" name="ENPDate" id="ENPDate" value="" class="form-control "  required>
-                                  </div>
-                            </div>
-
-
-                                
-
-
-                                
-                               <div id="quaterly">
-
-
-                               </div>
-
-                               <div id="effective">
-
-
-                              </div>
-
-                                
 
 
 
-
-
-
-
-                        </div> 
-
-
-                        <div class="form-group">
-                          <label for="nextPDate">Next Payment Date</label>
-                          <input type="text" name="nextPDate"  id="date" class="form-control date" placeholder="Next Payment  Date"  required>
-                        </div>
-
-
-
-
-
-                                  
-  
-
-                                
+                                            
                               </div> 
                               {{-- col-6 --}}
 
@@ -338,28 +312,28 @@
 
 
 
+                                        </div>
+
+                                        <div class="form-group">
+
+                                          <button type="submit" class="btn btn-primary btn-block">Create Sale </button>
+
+                                        </div>
+                                        
+                                        
+                                      </form>
+
+                                  
+                                </div>
+
                             </div>
+                        </div>
 
-                            <div class="form-group">
+                      
 
-                              <button type="submit" class="btn btn-primary btn-block">Create Sale </button>
-
-                            </div>
-                            
-                             
-                          </form>
-
-                       
-                    </div>
-
+                    </div> <!-- end col -->
                 </div>
-            </div>
-
-           
-
-        </div> <!-- end col -->
-    </div>
-     
+                
 
 
 

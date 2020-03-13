@@ -16,13 +16,13 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('project_id');
-            $table->float('amount_sold');
-            $table->string('payment_status');
-            $table->float('amount_paid');            
+            $table->bigInteger('amount_sold');           
+            $table->bigInteger('amount_paid');            
             $table->integer('user_id');
             $table->text('nextPDate');
+            $table->integer('otherCharges')->default(0);
             $table->integer('client_id');
-            $table->float('balance');  
+            $table->bigInteger('balance');  
             $table->timestamps();
         });
     }

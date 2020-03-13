@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSaleDetailsTable extends Migration
+class CreateOtherChargesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateSaleDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sale_details', function (Blueprint $table) {
+        Schema::create('other_charges', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('sale_id');
-            $table->bigInteger('amountToPay');           
+            $table->integer('chargeType');
+            $table->integer('billType');
+            $table->integer('grossperiod');
+            $table->mediumtext('effectiveDate');
+            $table->mediumtext('ENPDate');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateSaleDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sale_details');
+        Schema::dropIfExists('other_charges');
     }
 }
