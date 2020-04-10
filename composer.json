@@ -9,8 +9,7 @@
         "barryvdh/laravel-dompdf": "^0.8.2",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.4",
-        "uxweb/sweet-alert": "^1.4"
+        "renatomarinho/laravel-page-speed": "^1.8"
 
     },
     "require-dev": {

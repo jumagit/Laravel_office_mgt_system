@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCdetailsTable extends Migration
+class AddNextPDateToSaleDetails extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateCdetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cdetails', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('client_id');
-            $table->integer('ctype_id');           
-            $table->integer('user_id');
-            $table->timestamps();
+        Schema::table('sale_details', function (Blueprint $table) {
+            $table->date('nextPDate')->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ class CreateCdetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cdetails');
+        Schema::table('sale_details', function (Blueprint $table) {
+            $table->dropColumn(['nextPDate']);
+        });
     }
 }

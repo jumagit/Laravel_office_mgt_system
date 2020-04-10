@@ -9,25 +9,20 @@
         <meta content="Admin Dashboard" name="description" />
         <meta name="_base_url" content="{{ url('/') }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-      
-
         <meta content="Themesbrand" name="author" />
+     
         <link rel="shortcut icon" href="assets/images/favicon.ico">
-
+        <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/plugins/morris/morris.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/css/icons.css')}}">   
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/plugins/datepicker/datepicker3.css')}}"> 
+                
         
-        {{ Html::style('assets/plugins/bootstrap-md-datetimepicker/css/bootstrap-material-datetimepicker.css') }}
-        {{ Html::style('assets/plugins/bootstrap-touchspin/css/$.bootstrap-touchspin.min.css') }}
-        {{ Html::style('assets/plugins/select2/css/select2.min.css') }}
-        {{ Html::style('assets/plugins/morris/morris.css') }}
-        {{ Html::style('assets/css/bootstrap.min.css') }}
-        {{ Html::style('assets/css/icons.css') }}
-        {{ Html::style('assets/css/style.css') }}
-        {{ Html::style('assets/plugins/datatables/dataTables.bootstrap4.min.css') }}               
-      
-        {{ Html::style('assets/plugins/sweet-alert2/sweetalert2.min.css') }}
-       
-        {{ Html::style('assets/plugins/datepicker/datepicker3.css') }}
-
+     
 
 
 
@@ -135,59 +130,18 @@
 
 <!-- jQuery  -->
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{asset('assets/js/app.js')}}"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-
-{{ Html::script('assets/js/jquery.slimscroll.js')  }}
-{{ Html::script('assets/js/waves.min.js')  }}
-{{ Html::script('assets/plugins/jquery-sparkline/jquery.sparkline.min.js')  }}
-{{ Html::script('assets/plugins/parsleyjs/parsley.min.js') }}
-
-
-   <!-- Required datatable js -->
-{{ Html::script('assets/plugins/datatables/jquery.dataTables.min.js')  }}
-{{ Html::script('assets/plugins/datatables/dataTables.bootstrap4.min.js')  }}
-{{-- multiselect --}}
-{{ Html::script('assets/plugins/select2/js/select2.min.js')  }}
-
-{{ Html::script('assets/plugins/sweet-alert2/sweetalert2.min.js') }}
-
-
-
-
-{{ Html::script('assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js')  }}
-{{ Html::script('assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js')  }}
-
-<!-- App js -->
-{{ Html::script('assets/js/app.js')  }}
-
-
-
-{{-- date time picker --}}
-
-{{ Html::script('assets/plugins/datepicker/bootstrap-datepicker.js')  }}
-
-{{-- money validation--}}
-
-{{ Html::script('assets/plugins/money/number.js')  }}
-
-
-
-
-{{-- editor --}}
-
-{{ Html::script('assets/plugins/tinymce/tinymce.min.js') }}
-
-{{ Html::script('assets/plugins/chart/Chart.bundle.min.js') }}
-
-{{-- form validation using parsleys --}}
-
-
-{{-- custom javascript  --}}
-
-
-
-{{ Html::script('assets/js/custom.js') }}
-{{ Html::script('assets/js/functions.js') }}
+<script src="{{asset('assets/js/waves.min.js')}}"></script>
+<script src="{{asset('assets/plugins/parsleyjs/parsley.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
+<script src="{{asset('assets/plugins/sweet-alert2/sweetalert2.min.js')}}"></script>
+<script src="{{asset('assets/plugins/money/number.js')}}"></script>
+<script src="{{asset('assets/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+<script src="{{asset('assets/js/functions.js')}}"></script>
+<script src="{{asset('assets/js/custom.js')}}"></script>
 
 
 
@@ -245,23 +199,17 @@ swal('Deleted!', '{{ Session::get('danger') }}', 'info');
              
   $(document).ready(function(){
 
+
+    //calculating the effective date 
+
+    $('')
+
+
+
+
+
+
     $('#project_id').on('change', function() {
-
-  //calculating the effective date 
-
-    var grossperiod  = $('#grossperiod').val();//months
-
-    console.log(grossperiod);
-
-
-    var grossadd = grossperiod * 30;
-
-   
-
-
-
-   
-
    
      var html ="";
 
@@ -280,23 +228,14 @@ swal('Deleted!', '{{ Session::get('danger') }}', 'info');
 
            },
            success: function(data) {
-                            html+='  <div class="form-group">';
-                            html+='     <label for="projectPrice">Original Project Price</label>';
-                            html+='    <input type="text" name="projectPrice" id="projectPrice" value="'+ data.price+'"  class="form-control"  placeholder="Enter Project Price" >';
-                            html+='   </div>';
 
 
+                html+='  <div class="form-group">';
+                html+='     <label for="projectPrice">Original Project Price</label>';
+                html+='    <input type="text" name="projectPrice" id="projectPrice" value="'+ data.price+'"  class="form-control"  placeholder="Enter Project Price" >';
+                html+='   </div>';
 
-
-                            $('#price').append(html);                        
-
-                          
-                           
-                           
-                           
-
-                          
-                  
+                $('#price').append(html); 
            },
            fail:function(){
   

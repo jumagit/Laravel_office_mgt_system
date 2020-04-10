@@ -18,9 +18,10 @@ class CreateOtherChargesTable extends Migration
             $table->integer('sale_id');
             $table->integer('chargeType');
             $table->integer('billType');
-            $table->integer('grossperiod');
-            $table->mediumtext('effectiveDate');
-            $table->mediumtext('ENPDate');
+            $table->integer('gracePeriod');
+            $table->bigInteger('agreedAmount');
+            $table->dateTime('effectiveDate');
+            $table->dateTime('enpDate');
             $table->timestamps();
         });
     }

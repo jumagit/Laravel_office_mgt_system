@@ -1,13 +1,13 @@
 @extends('admin.layouts.master')
 
 @section('page')
-<h4 class="page-title"> View Sales</h4>
+<h4 class="page-title"> Debtors</h4>
 
 @stop
 
 @section('pagecomment')
 <ol class="breadcrumb">
-    <li class="breadcrumb-item active">Project Sales</li>
+    <li class="breadcrumb-item active">Debtors</li>
 </ol>
 @stop
 
@@ -20,13 +20,13 @@
         <div class="card m-b-20">
             <div class="card-body">
             
-                <h4 class="mt-0 header-title">View Sales</h4>
+                <h4 class="mt-0 header-title">View Debtors</h4>
             
              <div class="alert alert-info alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-                <strong>View Sales!</strong> Here you can view all  Sales
+                <strong>View  Debtors Sales!</strong> Here you can view all Debtors Clients
              </div>
                 
                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -34,11 +34,11 @@
                     <tr>
                          <th>No</th>
                         <th>Project Sold </th>
-                        <th>Sold To </th>
-                        <th>Amount  Sold </th>
-                        <th>Amount Paid </th>
+                        <th>Client Name </th>
+                        <th>Amount  Paid </th>
+                        <th>Balance</th>
                         <th>Made by </th>
-                        <th>Sold on </th>
+                        <th>P Made on </th>
                         <th>Next p. Date</th>
       
                         <th><i class="fas fa-trash-alt"></i></th>
@@ -63,9 +63,10 @@
                                 @endif
                             
                             </td> 
-                            <td><a href="{{ route('sale.payment',['id'=>$sale->id])}}">{{$sale->client->fullName}}</a></td> 
-                            <td> {{ $sale->amount_sold}} </td> 
-                            <td> {{ $sale->amount_paid}} </td> 
+                            <td><a href="{{ route('sale.payment',['id'=>$sale->id]) }}">{{$sale->client->fullName}}</a></td> 
+                           
+                            <td> {{ $sale->amount_paid}} </td>
+                            <td> {{ $sale->balance}} </td> 
                             <td>{{ $sale->user->name}}</td>
                             <td>{{ $sale->created_at->toFormattedDateString()}}</td>
                             <td>{{$sale->nextPDate}}</td>
@@ -83,22 +84,14 @@
                         <tr>
 
                             <th colspan="5" class="text-center">
-                            No Sales Found
+                            No Debtors Found
                             </th>
         
                         </tr>
-   
+
+                            
                     @endif
 
-
-
-                  
-
-                  
-
-            
-                   
-                  
                     </tbody>
                 </table>
             </div>

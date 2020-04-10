@@ -109,10 +109,19 @@
                                       </script>
 
 
+
+
                                       <div class="form-group">
                                         <label for="balance">Balance</label>
                                         <input type="text" name="balance" id="balance" data-type="currency" class="form-control "   placeholder="Balance" >
                                       </div>
+
+
+                                      
+                                    <div class="form-group">
+                                      <label for="nextPDate">Next Payment Date</label>
+                                      <input type="text" name="nextPDate"  id="date" class="form-control date" placeholder="Next Payment  Date"  >
+                                    </div>
 
                                      
 
@@ -130,7 +139,7 @@
                                       <label class="col-sm-6 control-label col-lg-6 mb-3">Other Charges </label>
                                       <div class="col-sm-6 col-lg-6 float-left">
                                           <div class="custom-control custom-radio custom-control-inline">
-                                              <input type="radio" id="otherNo" name="otherCharges" class="custom-control-input" value="0">
+                                              <input type="radio" id="otherNo"  checked name="otherCharges" class="custom-control-input" value="0">
                                               <label class="custom-control-label" for="otherNo">No</label>
                                           </div>
 
@@ -174,55 +183,60 @@
 
                                         <script>
 
-                                          function effective(gross){ 
+                                         
+                                            function date_format(datem){
+                                                var date,time;
+                                                date = datem.getFullYear()+'-'+(datem.getMonth()+1)+'-'+datem.getDate();
+                                                time = datem.getHours() + ":" + datem.getMinutes() + ":" + datem.getSeconds();
+                                                datem = date+ " " +time;
+                                                return datem;
+                                            }
 
-                                            var days = gross * 30;                                          
+                                          function effective(grace){ 
 
+                                            var days = grace * 30; 
                                             var date = new Date();
-                                            date.setDate(date.getDate() + days);
-                                            var gdate = date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
-                                            var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-                                            var dateTime = gdate;
+                                            date.setDate(date.getDate() + days);                                         
+                                            var effDate =   document.getElementById('date_eff');
+                                             effDate.value = date_format(date);  
+                                            return date;
 
-                                            date = date.toGMTString();
+                                          }
 
-                                            document.getElementById('date').value = date;
 
-                                            //calling the function
+                                          function date_format(datem){
 
-                                            ECNPDate();
+                                            var date = datem.getFullYear()+'-'+(datem.getMonth()+1)+'-'+datem.getDate();
+                                            var time = datem.getHours() + ":" + datem.getMinutes() + ":" + datem.getSeconds();
 
+                                            datem = date+ " " +time;
+                                         
+                                            return datem;
                                           }
 
                                           //Effective Charge Next Payment Date
 
-                                          function ECNPDate(){
+                                          function npdate(grace){
 
-                                            var chargeType;
+                                            var effective_date = effective(grace);
 
-                                            var days, day, month, year,ENPDate;
+                                            var chargeType, days,ENPDate;
 
-
-                                          var effective_date = document.getElementById('date').value;
-
-                                          //alert(effective_date);
-
-
-                                          if(document.getElementById('monthly').checked){
+                                            if(document.getElementById('monthly').checked){
 
                                             chargeType = document.getElementById('monthly').value;
 
-                                             days = 30 * chargeType;
+                                            days = 30 * chargeType;
 
-                                             effective_date = new Date(effective_date);
+                                            effective_date = new Date(effective_date);
 
                                             effective_date.setDate(effective_date.getDate() + days);
 
-                                            effective_date = effective_date.toGMTString();
+                                         
 
-                                            document.getElementById('ENPDate').value = effective_date;
+                                            document.getElementById('ENPDate').value =  date_format(effective_date);
 
-                                          }else if(document.getElementById('annually').checked){
+                                            }else if(document.getElementById('annually').checked){
 
                                             chargeType = document.getElementById('annually').value;
 
@@ -232,22 +246,31 @@
 
                                             effective_date.setDate(effective_date.getDate() + days);
 
-                                            effective_date = effective_date.toGMTString();
-
-
-                                            document.getElementById('ENPDate').value = effective_date;
+                                            document.getElementById('ENPDate').value =  date_format(effective_date);
 
 
 
-                                          }else{
+                                            }else{
 
                                             return;
 
 
-                                         }
+                                            }
+
+                                           
+
+
+
+
+
 
 
                                           }
+
+                                         
+
+
+                                          
                                         </script>
 
                                                   <div class="custom-control custom-radio custom-control-inline">
@@ -261,17 +284,17 @@
 
                                             
                                             <div class="form-group row">
-                                            <label for="grossperiod" class=" col-6">Gross Period(Months)</label>
+                                            <label for="grossperiod" class=" col-6">Grace Period(Months)</label>
                                                   <div class="col-6">
-                                                    <input type="number" name="grossperiod"  id="grossperiod" class="form-control" onkeyup="effective(this.value)"  required>
+                                                    <input type="number" name="gracePeriod"  id="gracePeriod" class="form-control" onkeyup="effective(this.value),npdate(this.value)"  >
                                                     
                                                 </div>
                                             </div>
 
                                           <div class="form-group row">
-                                              <label for="AmountToPay" class=" col-6">Amount</label>
+                                              <label for="amount" class=" col-6">Amount</label>
                                                 <div class="col-6">
-                                                <input type="text" name="amountToPay"  id="amountToPay" class="form-control " data-type="currency" value="Agreed Amount"  required>
+                                                <input type="text" name="agreedAmount"  id="agreedAmount" class="form-control " data-type="currency" placeholder="Agreed Amount"  >
                                                 </div>
                                           </div>
                       
@@ -279,14 +302,14 @@
                                           <div class="form-group row">
                                               <label for="effectiveDate" class=" col-6">Effective Date</label>
                                                   <div class="col-6">
-                                                  <input type="text" name="effectiveDate" id="date" value="" class="form-control "  required>
+                                                  <input type="text" name="effectiveDate" id="date_eff" value="" class="form-control "  >
                                                 </div>
                                           </div>
 
                                           <div class="form-group row">
                                             <label for="ENPDate" class=" col-6">Effective Charge Next Payment Date</label>
                                                 <div class="col-6">
-                                                <input type="text" name="ENPDate" id="ENPDate" value="" class="form-control "  required>
+                                                <input type="text" name="enpDate" id="ENPDate" value="" class="form-control "  >
                                               </div>
                                         </div>
 
@@ -295,10 +318,6 @@
                                     {{-- coloured section ends --}}
 
 
-                                    <div class="form-group">
-                                      <label for="nextPDate">Next Payment Date</label>
-                                      <input type="text" name="nextPDate"  id="date" class="form-control date" placeholder="Next Payment  Date"  required>
-                                    </div>
 
 
 

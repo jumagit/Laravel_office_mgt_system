@@ -19,7 +19,7 @@ class CreateSalesTable extends Migration
             $table->bigInteger('amount_sold');           
             $table->bigInteger('amount_paid');            
             $table->integer('user_id');
-            $table->text('nextPDate');
+            $table->dateTime('nextPDate');
             $table->integer('otherCharges')->default(0);
             $table->integer('client_id');
             $table->bigInteger('balance');  

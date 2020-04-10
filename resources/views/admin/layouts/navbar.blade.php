@@ -148,35 +148,63 @@
                         <li><a href="{{ route('users')}}">View All Users</a></li>
                         <li><a href="{{ route('user.trashed')}}">View Trashed Users</a></li>
                         <li><a href="{{ route('users.create') }}">Register User</a></li>
-
-                        
-                       
-                            
                         </ul>
                     </li>
 
-                   
-
+                    
                     <li class="has-submenu">
-                        <a href="#"><i class="fas fa-credit-card"></i>Sales Management</a>
-                        <ul class="submenu">
-                            <li><a href="{{ route('sales') }}">View All Sales</a></li>
-                            <li><a href="{{ route('sales.create') }}">Create Sale</a></li>
-                           
-                            
-                        </ul>
-                    </li>
+                        <a href="#"><i class="fas fa-th"></i>Project Management</a>
 
+                        <ul class="submenu megamenu">
+                            <li>
+                                <ul>
+                                    <li><a href="{{ route('projects') }}">View All Projects</a></li>                                   
+                                    <li><a href="{{ route('categories') }}">Project Categories</a></li>
+                                    <li><a href="{{ route('inactiveProjects') }}">Inactive Projects</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li><a href="{{ route('projects.create') }}">Register Project</a></li> 
+                                    <li><a href="{{ route('categories.create') }}">Create category</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                      
+                    </li>
 
                     <li class="has-submenu">
                         <a href="#"><i class="fas fa-users"></i>Client Management</a>
                         <ul class="submenu">
                             <li><a href="{{ route('clients.main') }}">View All Clients</a></li>
                             <li><a href="{{ route('clients') }}">Create Client</a></li>
-                           
-                            
                         </ul>
                     </li>
+
+
+
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-credit-card"></i>Sales Management</a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('sales') }}">View All Sales</a></li>
+                            <li><a href="{{ route('sales.subscribers') }}">View All Subscribers</a></li>                           
+                            <li><a href="{{ route('sales.create') }}">Create Sale</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-finance"></i> Payments Management <span class="badge badge-danger"><small class="text-white">1</small></span> | <span class="badge badge-primary"><small class="text-white">4</small></span></a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('sales.creditors') }}" ><small class="badge badge-primary"><small class="text-white lead">4</small></small> Creditors  </a></li>
+                            <li><a href="{{ route('sales.debtors') }}"><small class="badge badge-danger"><small class="text-white lead">1</small></small>Debtors </a></li>
+                        </ul>
+                    </li>
+
+
+
+                  
 
              
 
@@ -205,28 +233,6 @@
                     </li> --}} 
 
                  
-
-                    <li class="has-submenu">
-                        <a href="#"><i class="fas fa-th"></i>Project Management</a>
-
-                        <ul class="submenu megamenu">
-                            <li>
-                                <ul>
-                                    <li><a href="{{ route('projects') }}">View All Projects</a></li>                                   
-                                    <li><a href="{{ route('categories') }}">Project Categories</a></li>
-                                    <li><a href="{{ route('inactiveProjects') }}">Inactive Projects</a></li>
-                                   
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li><a href="{{ route('projects.create') }}">Register Project</a></li> 
-                                    <li><a href="{{ route('categories.create') }}">Create category</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                      
-                    </li>
 
 
                    

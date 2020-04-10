@@ -12,6 +12,8 @@ use App\SaleDetails;
 
 use App\Transaction;
 
+use App\Other_charges;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
@@ -19,7 +21,7 @@ class Sale extends Model
     protected $fillable = [
        'project_id',
        'amount_sold',
-       'payment_status',
+       'otherCharges',
        'amount_paid',
        'balance',
        'nextPDate',
@@ -37,8 +39,12 @@ class Sale extends Model
       }
 
 
-      public function saledetail(){
+      public function saledetails(){
         return $this->hasOne('App\SaleDetails');
+      }
+
+      public function other_charges(){
+        return $this->hasOne('App\Other_charges');
       }
 
 
@@ -47,15 +53,16 @@ class Sale extends Model
       }
 
 
+      public function other_charges_income(){
+        return $this->belongsTo('App\Other_charges_income');
+    }
+
+
       public function client(){
         return $this->belongsTo('App\Client');
       }
 
-      static function getBalanceAttribute($val1, $val2){
-
-        return intVal($val1 - $val2);
-
-      }
+   
 
 
 

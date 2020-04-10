@@ -19,7 +19,7 @@ class CreateProjectsTable extends Migration
             $table->text('projectPrice');
             $table->integer('category_id');           
             $table->integer('status')->default(1);
-            $table->text('startDate');
+            $table->date('startDate');
             $table->text('projectDesc');
             $table->integer('user_id');
             $table->timestamps();

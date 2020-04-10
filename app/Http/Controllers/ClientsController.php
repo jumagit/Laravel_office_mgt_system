@@ -39,28 +39,13 @@ class ClientsController extends Controller
     }
 
     public function index()
-    {
-       
+    {       
         return view('admin.clients.searchClient');
     }
 
-
-    
-
-
     public function active(){
-
         $cdetail = Cdetail::find(1);
-
-
-
-       
-
-
-
     }
-
-
 
     //printing method
 
@@ -75,25 +60,17 @@ class ClientsController extends Controller
     foreach($data->sales as $sale){
 
         $total += $sale->amount_sold;
-
-
-
-
     }
 
-//  dd($total);
 
-    
-   
-
-    
     $pdf = PDF::loadView('admin.clients.clientPdf',  [
         'data' => $data,
-        'total1' => '######'
+        'total' => $total,
        
     ]);
-    return $pdf->stream('PDF');
-    $pdf->setPaper('A4');
+    
+    // return $pdf->stream('PDF');
+    // $pdf->setPaper('A4');
 
     return $pdf->download('sales.pdf');
 
@@ -159,8 +136,6 @@ class ClientsController extends Controller
             'email'=>'email',
             'otherContact'=>'',                
             'about'=>'required',
-            
-
         ]);
 
 
@@ -173,33 +148,18 @@ class ClientsController extends Controller
             'email'          => $request->email,
             'about'          => $request->about,
             'user_id'        =>Auth::user()->id,
-           
-
         ]);
-
-     
 
         $cdetails = Cdetail::create([
 
             'client_id'          =>$client->id,
             'ctype_id'        =>$request->clientType,           
             'user_id'            =>Auth::user()->id,
-
         ]);
-
-
-
-
-        
-
 
         Session::flash('success','A new Client has been created successfully');
 
         return redirect()->back();
-
-
-
-
     }
 
 

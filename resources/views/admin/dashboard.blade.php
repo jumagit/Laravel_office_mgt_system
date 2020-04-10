@@ -134,7 +134,7 @@
             <!-- end row -->
 
             <div class="row">
-                <div class="col-xl-7">
+                <div class="col-xl-6">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="mt-0 header-title mb-4">Latest Trasaction</h4>
@@ -242,7 +242,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-5">
+                <div class="col-xl-6">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="mt-0 header-title mb-4">Latest Order</h4>
@@ -250,53 +250,43 @@
                                 <table class="table table-hover mb-0">
                                     <thead>
                                         <tr>
-                                        <th scope="col">(#) Id</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Date/Time</th>
-                                        <th scope="col">Amount</th>
-                                        <th scope="col" colspan="2">Status</th>
-                                        
+                                        <th scope="col">(#) Id</th>                                       
+                                        <th scope="col">Transaction Id</th>
+                                        <th scope="col">Project Name</th>
+                                        <th scope="col">Amount Recieved</th>
+                                        <th scope="col">Client Name</th>
+                                        <th scope="col">Transaction Date</th>
+                                                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+
+                                        @if ($sale_details->count() > 0)
+
+                                        @foreach ($sale_details as $sale_detail)
                                        
                                         <tr>
-                                            <th scope="row">#14565</th>
-                                            <td>
-                                                <div>
-                                                    <img src="assets/images/users/user-7.jpg" alt="" class="thumb-md rounded-circle mr-2"> Robert Rankin
-                                                </div>
-                                            </td>
-                                            <td>19/8/2018
-                                                <p class="font-13 text-muted mb-0">11:47AM</p>
-                                            </td>
-                                            <td>$109</td>
-                                            <td><span class="badge badge-primary badge-pill"><i class="mdi mdi-checkbox-blank-circle text-primary"></i> Cancel</span></td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                </div>
-                                            </td>
+                                             <td scope="row">{{ $loop->iteration }}</td>
+                                             <td>{{$sale_detail->transaction_id}}</td>
+                                             <td>{{$sale_detail->sale->project->projectName}}</td>
+                                             <td>{{$sale_detail->amount}}</td>
+                                             <td>{{$sale_detail->sale->client->fullName}}</td> 
+                                             <td>{{$sale_detail->created_at}}</td>                                            
                                         </tr>
+                                        @endforeach
+
+                                        @else 
+                                       
                                         <tr>
-                                            <th scope="row">#14566</th>
-                                            <td>
-                                                <div>
-                                                    <img src="assets/images/users/user-8.jpg" alt="" class="thumb-md rounded-circle mr-2"> Myrna Shields
-                                                </div>
-                                            </td>
-                                            <td>20/8/2018
-                                                <p class="font-13 text-muted mb-0">02:52PM</p>
-                                            </td>
-                                            <td>$120</td>
-                                            <td><span class="badge badge-success badge-pill"><i class="mdi mdi-checkbox-blank-circle text-success"></i> Delivered</span></td>
-                                            <td>
-                                                <div>
-                                                    <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                </div>
-                                            </td>
+                
+                                            <th colspan="5" class="text-center">
+                                            No Recent Sales Found
+                                            </th>
+                        
                                         </tr>
+                                            
+                                    @endif
+                                        
                                     </tbody>
                                 </table>
                             </div>

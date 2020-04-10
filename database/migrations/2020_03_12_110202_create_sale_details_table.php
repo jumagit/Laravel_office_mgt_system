@@ -16,7 +16,8 @@ class CreateSaleDetailsTable extends Migration
         Schema::create('sale_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('sale_id');
-            $table->bigInteger('amountToPay');           
+            $table->string('transaction_id');
+            $table->bigInteger('amount');           
             $table->timestamps();
         });
     }

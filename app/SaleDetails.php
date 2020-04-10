@@ -11,13 +11,13 @@ class SaleDetails extends Model
 {
     protected $fillable = [
         'sale_id',
-        'billType',
-        'chargeType',
-        'amount_to_pay',
-        'effectiveDate',
+        'amount',
+        'transaction_id'     
+       
         
      ];
- 
+
+    
 
      public function sale(){
         return $this->belongsTo('App\Sale');

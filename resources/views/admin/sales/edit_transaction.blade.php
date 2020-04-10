@@ -32,61 +32,23 @@
 
                         <form action="{{ route('sales.store')}}" method="post"  id="salesCreateForm">
                             {{csrf_field()}}
-                            
-                               <div class="form-group">
-                                   <label for="project_id">Project Name</label>
-                                   <select class="custom-select" name="project_id" id="project_id" required>
-                                       <option selected>-- Select Product -- </option>
-                                     @foreach ($projects as $project)
-
-                                   <option value="{{$project->id}}">{{ $project->projectName}}  |  costs shs <b>{{ $project->projectPrice}}</b></option>
-                                         
-                                     @endforeach
-                                   </select>
-                               </div>
 
 
-                               <div class="form-group">
-                                <label for="client_id">Client Name</label>
-                                <select class="custom-select" name="client_id" id="" required>
-                                    <option selected>-- Select Client -- </option>
-                                  @foreach ($clients as $client)
 
-                                <option value="{{$client->id}}">{{ $client->fullName}}   </option>
-                                      
-                                  @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group" id="price" >
                                
-
-                                
-                              </div>
-
-                             <div class="form-group">
-                                <label for="projectPrice">Amount Sold</label>
-                                <input type="text" name="amount_sold"  class="form-control "  id="projectPrice" onkeyup="test()" required data-parsley-trigger="keyup" required   placeholder="Enter Selling Price" >
-                              </div>
-                            
-                             <div class="form-group">
-                                <label for="projectPrice">Amount Paid</label>
-                                <input type="text" name="amount_paid"  class="form-control money" id="pprice"  onkeyup="test()"  required data-parsley-trigger="keyup" placeholder="Enter Amount Paid" >
-                              </div>
-
-                              <div class="form-group">
-                                <label for="nextPDate">Next Payment Date</label>
-                                <input type="text" name="nextPDate"  id="date" class="form-control date" placeholder="Next Payment  Date"  required>
-                            </div>
-                            
+                             
                              <button type="submit" class="btn btn-primary btn-block">Add Sale </button>
                           </form>
 
-                       
                     </div>
 
                 </div>
-            </div>
+
+                       
+                  
+            
+            
+          </div>
 
            
 

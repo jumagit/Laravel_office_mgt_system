@@ -12,6 +12,8 @@ use App\User;
 
 use App\Sale;
 
+use App\SaleDetails;
+
 use App\Transaction;
 
 class DashboardController extends Controller
@@ -35,6 +37,7 @@ class DashboardController extends Controller
     {
         $user = User::all();
         $sale = Sale::all();
+        $sale_details = SaleDetails::all();
         $project =  Project::all();
         $client = Client::all();
         $transaction = Transaction::all();
@@ -42,6 +45,7 @@ class DashboardController extends Controller
                                       ->with('client', $client)
                                       ->with('sale', $sale)
                                       ->with('user', $user)
+                                      ->with('sale_details', $sale_details)
                                       ->with('transactions', $transaction);
     }
 

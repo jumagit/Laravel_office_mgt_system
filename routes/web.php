@@ -17,10 +17,7 @@ Route::get('/' , function(){
 });
 
 
-// Route::get('/page/pageNotFound',[
-//     'uses' =>'DashboardController@notfound',
-//     'as'   => 'notfound'
-// ]);
+
 
 Route::get('/getData', function(){
     return File::get(public_path() . '/fetchdata.php');
@@ -209,6 +206,8 @@ Route::get('/client/create',[
     'uses' => 'ClientsController@create',
     'as'   => 'clients.create'
 ]);
+
+
 
 Route::get('/client/edit/{id}',[
     'uses' =>'ClientsController@edit',
@@ -406,8 +405,32 @@ Route::get('sales/view',[
     'as'   =>'sales'
 ]);
 
+Route::get('sales/creditors/view',[
+    'uses' =>'SalesController@creditors',
+    'as'   =>'sales.creditors'
+]);
 
 
+Route::get('sales/debtors/view',[
+    'uses' =>'SalesController@debtors',
+    'as'   =>'sales.debtors'
+]);
+
+Route::get('sales/subscribers/view',[
+    'uses' =>'SalesController@subscribers',
+    'as'   =>'sales.subscribers'
+]);
+
+
+Route::get('client/subscriptions/view/{id}',[
+    'uses' =>'SalesController@client_subscription',
+    'as'   =>'client.subscription'
+]);
+
+Route::post('/subscribe/{id}',[
+    'uses' =>'SalesController@make_payment',
+    'as'  => 'income.store'
+]);
 
 Route::get('sales/create',[
     'uses' =>'SalesController@create',
@@ -424,6 +447,11 @@ Route::get('/sales/chart',[
     'as' =>'sales.chart'    
     ]);
 
+    // Route::get('/sales/pdf/{id}',[
+    //     'uses' => 'SalesController@update',
+    //     'as'   => 'print.sales',
+    // ]);
+
 
 Route::post('sales/store',[
     'uses' =>'SalesController@store',
@@ -433,6 +461,16 @@ Route::post('sales/store',[
 Route::get('/sale/daily/{id}',[
     'uses' =>'SalesController@daily',
     'as'  => 'sale.daily'
+]);
+
+Route::get('/sale/payment/{id}',[
+    'uses' =>'SalesController@show',
+    'as'   => 'sale.payment'
+]);
+
+Route::post('/sale/update/{id}',[
+    'uses' =>'SalesController@update',
+    'as'  => 'sale.update'
 ]);
 
 Route::get('/sale/monthly/{id}',[

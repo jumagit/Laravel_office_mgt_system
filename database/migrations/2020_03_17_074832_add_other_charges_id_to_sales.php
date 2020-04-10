@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCdetailsTable extends Migration
+class AddOtherChargesIdToSales extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateCdetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cdetails', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('client_id');
-            $table->integer('ctype_id');           
-            $table->integer('user_id');
-            $table->timestamps();
+        Schema::table('sales', function (Blueprint $table) {
+            $table->integer('other_charges_id')->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ class CreateCdetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cdetails');
+        Schema::table('sales', function (Blueprint $table) {
+            $table->dropColumn(['other_charges_id']);
+        });
     }
 }

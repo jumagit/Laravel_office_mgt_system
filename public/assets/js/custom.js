@@ -37,11 +37,12 @@ jQuery(document).ready(function() {
     jQuery('.date').datepicker({
 
         autoclose: true,
-        format: 'dd/mm/yyyy',
+        format: 'yyyy-mm-dd',
         todayBtn: true,
         todayHighlight: true,
 
     });
+
 
 
     jQuery('.month').datepicker({
